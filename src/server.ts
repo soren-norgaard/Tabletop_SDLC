@@ -4,6 +4,7 @@
  */
 
 import express, { Request, Response, NextFunction } from 'express';
+import path from 'path';
 import {
   createReservation,
   getReservation,
@@ -34,6 +35,9 @@ const PORT = 3080;
 
 // Middleware
 app.use(express.json());
+
+// Serve static files (Web UI)
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
